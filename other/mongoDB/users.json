@@ -1,6 +1,6 @@
 [
   {
-    "_id": { "$oid": "63f1a3e7a4f2b831ac4d2345" },
+    "user_id": "63f1a3e7a4f2b831ac4d2345",
     "username": "JohnDoe",
     "email": "john.doe@example.com",
     "password": "$2b$10$eG5GzjRfK5A8O/Ji2OgU3uZFk2xo6cMd1j9mKhJFKB5b/Vp5y9k/a",
@@ -9,7 +9,7 @@
     "created_at": { "$date": "2025-01-25T14:00:00Z" }
   },
   {
-    "_id": { "$oid": "63f1b5f7a4f2b831ac4d2346" },
+    "user_id": "63f1b5f7a4f2b831ac4d2346",
     "username": "AliceW",
     "email": "alice.w@example.com",
     "password": "$2b$10$aO2TRoSJKG9rL8bKgf.PZOqS9lLhE9CjS6F5zMcN61T2iD5oBNcKa",
@@ -18,7 +18,7 @@
     "created_at": { "$date": "2025-01-26T10:30:00Z" }
   },
   {
-    "_id": { "$oid": "63f1c1a7a4f2b831ac4d2347" },
+    "user_id": "63f1c1a7a4f2b831ac4d2347" ,
     "username": "Mike92",
     "email": "mike92@example.com",
     "password": "$2b$10$Gh2N3oQO/JR8oZqhJ9L6Y/Zpl8IoklVk8pL/NG2pOZk1iTBaQoXq6",

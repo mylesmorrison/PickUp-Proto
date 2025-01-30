@@ -1,29 +1,42 @@
 [
   {
-    "_id": { "$oid": "63f1a3e7a4f2b831ac4d2345" },
-    "username": "JohnDoe",
-    "email": "john.doe@example.com",
-    "password": "$2b$10$eG5GzjRfK5A8O/Ji2OgU3uZFk2xo6cMd1j9mKhJFKB5b/Vp5y9k/a",
-    "bio": "Loves playing football and organizing games.",
-    "age": 28,
-    "created_at": { "$date": "2025-01-25T14:00:00Z" }
+    "event_id": 1,
+    "user_id": "63f1a3e7a4f2b831ac4d2345",
+    "event_name": "Sunday Football League",
+    "event_date": "2025-02-10",
+    "event_location": "Central Park, NY",
+    "event_description": "Join us for a friendly football league every Sunday afternoon."
   },
   {
-    "_id": { "$oid": "63f1b5f7a4f2b831ac4d2346" },
-    "username": "AliceW",
-    "email": "alice.w@example.com",
-    "password": "$2b$10$aO2TRoSJKG9rL8bKgf.PZOqS9lLhE9CjS6F5zMcN61T2iD5oBNcKa",
-    "bio": "Basketball enthusiast and weekend warrior.",
-    "age": 25,
-    "created_at": { "$date": "2025-01-26T10:30:00Z" }
+    "event_id": 2,
+    "user_id": "63f1b5f7a4f2b831ac4d2346",
+    "event_name": "Weekend Basketball Tournament",
+    "event_date": "2025-02-15",
+    "event_location": "Downtown Gym, CA",
+    "event_description": "Compete with local basketball teams in this weekend tournament."
   },
   {
-    "_id": { "$oid": "63f1c1a7a4f2b831ac4d2347" },
-    "username": "Mike92",
-    "email": "mike92@example.com",
-    "password": "$2b$10$Gh2N3oQO/JR8oZqhJ9L6Y/Zpl8IoklVk8pL/NG2pOZk1iTBaQoXq6",
-    "bio": "Always up for a soccer match in the evenings.",
-    "age": 30,
-    "created_at": { "$date": "2025-01-24T18:15:00Z" }
+    "event_id": 3,
+    "user_id": "63f1c1a7a4f2b831ac4d2347",
+    "event_name": "Evening Soccer Match",
+    "event_date": "2025-02-20",
+    "event_location": "Community Field, TX",
+    "event_description": "Casual soccer match for players of all skill levels."
+  },
+  {
+    "event_id": 4,
+    "user_id": "63f1b5f7a4d2346",
+    "event_name": "Basketball Skills Workshop",
+    "event_date": "2025-03-05",
+    "event_location": "Sports Arena, FL",
+    "event_description": "Improve your shooting and dribbling with professional coaches."
+  },
+  {
+    "event_id": 5,
+    "user_id": "63f1a3e7a4f2b831ac4d2345",
+    "event_name": "Open Football Tryouts",
+    "event_date": "2025-03-12",
+    "event_location": "High School Field, NV",
+    "event_description": "Show your skills and join a local football team."
   }
 ]
