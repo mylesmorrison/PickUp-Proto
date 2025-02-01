@@ -2,32 +2,28 @@ const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema(
     {
+        event_id: {
+            type: Number,
+            required: true
+        },
         user_id: {
-            type: Number,
+            type: Number, 
             required: true
         },
-        username: {
+        event_name: {
             type: String,
             required: true
         },
-        password: {
+        event_date: {
             type: String,
             required: true
         },
-        email: {
+        event_location: {
             type: String,
             required: true
         },
-        bio: {
-            type: String,
-            required: true
-        },
-        age: {
-            type: Number,
-            required: true
-        },
-        created_at: {
-            type: String,
+        event_description: {
+            type: String, 
             required: true
         }
     }
