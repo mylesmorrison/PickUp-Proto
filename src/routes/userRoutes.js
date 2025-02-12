@@ -4,7 +4,7 @@ const userController = require('../controllers/userController.js');
 
 //Route to get user profile
 router.get("./:user_id", userController.getUserProfile);
-
+//Route to get user events
 router.get('/:user_id/events', userController.getUserEvents);
 
 module.exports = router;
