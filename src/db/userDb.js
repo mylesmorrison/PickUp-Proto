@@ -19,3 +19,7 @@ async function userAdd(username, password) {
       return { error: `Error adding user: ${error.message}` };
     }
   }
+
+async function userDelete(username) {
+  
+}
