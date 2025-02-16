@@ -21,5 +21,10 @@ async function userAdd(username, password) {
   }
 
 async function userDelete(username) {
-  
+  try {
+    // do checks for valid delete
+  } catch (error) {
+    return { error: `Error deleting user: ${error.message}` };
+  }
 }
+
