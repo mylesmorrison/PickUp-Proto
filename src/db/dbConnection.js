@@ -1,11 +1,11 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const mongoose = require('mongoose');
 const User = require('../models/userModel.js');
-require('dotenv').config();
+require('dotenv').config({ path: '../../.env' });
 
 async function connectDB() {
   try {
-    await mongoose.connect("mongodb+srv://Myles:germany@cluster0.14ksq.mongodb.net/PickUpProtoDB", {
+    await mongoose.connect(process.env.MONGO_URI, {
     });
     console.log("MongoDB Connected!");
     console.log(mongoose.connection.name)
