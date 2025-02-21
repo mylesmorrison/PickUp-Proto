@@ -1,5 +1,5 @@
 const getEventInformation = (req, res) => {
-
+    
 }
 
 const addEvent = (req, res) => {
