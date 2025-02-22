@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const User = require('../models/userModel.js');
 require('dotenv').config({ path: '../../.env' });
 
-async function connectDB() {
+const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI, {
     });
@@ -23,12 +23,6 @@ async function getUsers() {
   }
 }
 
-async function main() {
-  await connectDB()
-  await getUsers()
-  process.exit()
-}
-
-main()
+module.exports = connectDB
 
 
