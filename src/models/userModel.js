@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema(
     {
-        user_id: {
-            type: Number,
-            required: true
-        },
         username: {
             type: String,
             required: true
@@ -24,10 +20,6 @@ const userSchema = mongoose.Schema(
         },
         age: {
             type: Number,
-            required: true
-        },
-        created_at: {
-            type: String,
             required: true
         }
     }

@@ -12,5 +12,10 @@ async function getEvents () {
         console.log("error fetching events:", error.message)
     }
 }
+
+async function getEvent (eventID) {
+  const events = await Event.find() 
+  console.log("Event lists: ", events)
+}
 connectDB()
 getEvents()
