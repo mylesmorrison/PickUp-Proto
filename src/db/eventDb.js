@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Event = require('../models/eventModel.js');
-const  connectDB  = require('./dbConnection.js');
+//const  connectDB  = require('./dbConnection.js');
 
 
 async function getEvents () {
@@ -82,11 +82,11 @@ async function deleteEvent(event_id) {
   }
 }
 
-connectDB()
-getEvents()
-getEventById('67ba5ae297ed44d10a986e26')
-getEventNamesByEventDate('2025-02-15')
-addEvent()
+//connectDB()
+//getEvents()
+//getEventById('67ba5ae297ed44d10a986e26')
+//getEventNamesByEventDate('2025-02-15')
+//addEvent()
 /** 
 addEvent(
   "Sunday Football League",    // Event Name
@@ -96,3 +96,4 @@ addEvent(
 );
 **/
 
+module.exports = { getEvents }

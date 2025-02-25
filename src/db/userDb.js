@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const User = require('../models/userModel.js');
-const connectDB = require('./dbConnection.js')
+//const connectDB = require('./dbConnection.js')
 
 async function getUsers() {
   try {
@@ -86,10 +86,10 @@ async function deleteUser(user_id) {
 
 
 
-connectDB()
-getUsers()
-getUserById("67b28fae767d1d56e3efe03d")
-getEmailByUsername("AliceW")
+//connectDB()
+//getUsers()
+//getUserById("67b28fae767d1d56e3efe03d")
+//getEmailByUsername("AliceW")
 
 /** 
 addUser(
