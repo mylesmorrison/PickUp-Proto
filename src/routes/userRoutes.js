@@ -2,10 +2,13 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController.js');
 
+
+//Route 
+router.get("/", userController.getAllUsers)
 //Route to get user profile
-router.get("./:user_id", userController.getUserProfile);
+//router.get("/:user_id", userController.getUserProfile);
 //Route to get user events
-router.get('/:user_id/events', userController.getUserEvents);
+//router.get('/:user_id/events', userController.getUserEvents);
 
 
 module.exports = router;

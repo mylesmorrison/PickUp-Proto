@@ -14,16 +14,28 @@
             Submit
         </button>
     </form>
+    <ul id="userList"></ul> <!-- Where events will be displayed -->
     <div id="footer"></div>
     <script>
         document.getElementById("form").addEventListener("submit", async () => {
             event.preventDefault(); // ✅ Prevents the form from reloading the page
             try {
-
+                
                 //const response = await fetch("/api/login")
                 console.log("submitted"); // ✅ Now this will log in the console
                 let inputs = [document.getElementById("input1").value, document.getElementById("input2").value]
                 console.log("inputs: ", inputs)
+
+                //backend calls
+                const response = await fetch("/api/users"); // Request events from backend
+                const users = await response.json();
+                const userList = document.getElementById("userList");
+                userList.innerHTML = ""; // Clear previous events
+                users.forEach(user => {
+                    const li = document.createElement("li");
+                    li.textContent = `${user.username} - ${user.email} at ${user.age}`;
+                    userList.appendChild(li);
+                });
                 
             } catch (error) {
                 console.error("error submitting ", error);

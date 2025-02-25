@@ -6,6 +6,7 @@ async function getUsers() {
   try {
     const users = await User.find()
     console.log("users list: ", users)
+    return users
   } catch(error) {
       console.log("error fetching users:", error.message)
   }
@@ -84,6 +85,7 @@ async function deleteUser(user_id) {
   }
 }
 
+module.exports = { getUsers }
 
 
 //connectDB()

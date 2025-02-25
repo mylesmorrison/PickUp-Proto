@@ -15,6 +15,10 @@ app.use(express.static(path.join(__dirname, "../public")));
 const eventRoutes = require("./routes/eventRoutes");
 app.use("/api/events", eventRoutes);
 
+// Use user routes 
+const userRoutes = require("./routes/userRoutes")
+app.use("/api/users", userRoutes)
+
 // ✅ Connect to MongoDB at startup
 connectDb();
 
