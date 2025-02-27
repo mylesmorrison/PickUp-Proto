@@ -3,9 +3,19 @@ const path = require("path");
 const mongoose = require("mongoose");
 require('dotenv').config({ path: '../.env' });
 const connectDb = require("./db/dbConnection"); // ✅ Import DB connection function
+const session = require("express-session")
+
 
 
 const app = express();
+
+app.use(session({
+    secret: 'yourSecretKey',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}))
+
 app.use(express.json()); // Allow JSON in requests
 
 // Serve static files (index.html, script.js, etc.)
@@ -27,6 +37,24 @@ app.get("/", (req, res) => res.sendFile(path.join(__dirname, "../public/index.ht
 app.get("/about", (req, res) => res.sendFile(path.join(__dirname, "../public/about.html")));
 app.get("/login", (req, res) => res.sendFile(path.join(__dirname, "../public/login.html")));
 app.get("/signup", (req, res) => res.sendFile(path.join(__dirname, "../public/signup.html")));
+
+app.post('/login/practice', (req, res) => {
+    const {username, password} = req.body
+    if (username && password) {
+        if (req.session.authenticated) {
+            res.json(req.session)
+        } else {
+            if (password === "123") {
+                req.session.authenticated = true;
+                req.sessionID.user = {
+                    username, password
+                }
+                res.json(req.session)
+            }
+        }
+    }
+    res.send(200)
+})
 
 const PORT = 3000;
 app.listen(PORT, () => {
