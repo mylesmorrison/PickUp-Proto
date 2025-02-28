@@ -5,8 +5,6 @@ require('dotenv').config({ path: '../.env' });
 const connectDb = require("./db/dbConnection"); // ✅ Import DB connection function
 const session = require("express-session")
 
-
-
 const app = express();
 
 app.use(session({
@@ -29,6 +27,7 @@ app.use("/api/events", eventRoutes);
 const userRoutes = require("./routes/userRoutes")
 app.use("/api/users", userRoutes)
 
+
 // ✅ Connect to MongoDB at startup
 connectDb();
 
@@ -37,6 +36,15 @@ app.get("/", (req, res) => res.sendFile(path.join(__dirname, "../public/index.ht
 app.get("/about", (req, res) => res.sendFile(path.join(__dirname, "../public/about.html")));
 app.get("/login", (req, res) => res.sendFile(path.join(__dirname, "../public/login.html")));
 app.get("/signup", (req, res) => res.sendFile(path.join(__dirname, "../public/signup.html")));
+app.get("/profile", (req, res) => res.sendFile(path.join(__dirname, "../public/profile.html")))
+
+
+
+// Serve profile.html dynamically
+app.get("/profile.html/:user_id", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "profile.html"));
+});
+
 
 app.post('/login/practice', (req, res) => {
     const {username, password} = req.body

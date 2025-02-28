@@ -16,3 +16,4 @@ document.getElementById("loadEvents").addEventListener("click", async () => {
         console.error("Error fetching events:", error);
     }
 });
+
