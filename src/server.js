@@ -38,11 +38,10 @@ app.get("/login", (req, res) => res.sendFile(path.join(__dirname, "../public/log
 app.get("/signup", (req, res) => res.sendFile(path.join(__dirname, "../public/signup.html")));
 app.get("/profile", (req, res) => res.sendFile(path.join(__dirname, "../public/profile.html")))
 
-
-
+console.log(__dirname)
 // Serve profile.html dynamically
 app.get("/profile.html/:user_id", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "profile.html"));
+    res.sendFile(path.join(__dirname, "../public/profile.html"));
 });
 
 
