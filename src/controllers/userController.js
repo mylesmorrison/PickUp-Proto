@@ -11,9 +11,20 @@ const getAllUsers = async (req, res) => {
 }
 
 const getUserProfile = async (req, res) => {
+    const user_id = req.params.user_id
+    try {
+        console.log("Fetching user with ID:", user_id); // Debugging log
+        const user = await getUserById(user_id); // Fetch from database
 
-    const userId = req.params.user_id;
-    console.log(userId)
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json(user); // Send user data as JSON
+    } catch (error) {
+        console.error("Error fetching user data:", error);
+        res.status(500).json({ message: "Server error" });
+    }
 }
 
 const getUserEvents = (req, res) => {

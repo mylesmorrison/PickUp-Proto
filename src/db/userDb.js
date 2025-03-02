@@ -85,7 +85,7 @@ async function deleteUser(user_id) {
   }
 }
 
-module.exports = { getUsers }
+module.exports = { getUsers, getUserById }
 
 
 //connectDB()
