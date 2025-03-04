@@ -19,7 +19,6 @@ const getUserProfile = async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
-
         res.json(user); // Send user data as JSON
     } catch (error) {
         console.error("Error fetching user data:", error);

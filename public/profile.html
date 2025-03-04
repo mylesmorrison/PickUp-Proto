@@ -21,7 +21,21 @@
         console.log(user_id)
 
         document.addEventListener("DOMContentLoaded", async () => {
-            const response = fetch(`/api/users/${user_id}`)
+            try {
+                const response = await fetch(`/api/users/${user_id}`); // Adjust endpoint
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const userData = await response.json();
+                console.log("User Data:", userData); // Debugging log
+
+                // Display user data in HTML
+                document.getElementById('user-name').textContent = userData.name;
+                document.getElementById('user-email').textContent = userData.email;
+
+            } catch (error) {
+                console.error("Error fetching user profile:", error);
+            }
         })
     
     </script>
