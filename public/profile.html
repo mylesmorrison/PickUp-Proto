@@ -6,6 +6,13 @@
     <title>Pick Up | Profile</title>
 </head>
 <body>
+
+    <h2>User Profile</h2>
+    <p><strong>Username:</strong> <span id="username">Loading...</span></p>
+    <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+    <p><strong>Bio:</strong> <span id="bio">Loading...</span></p>
+    <p><strong>Age:</strong> <span id="age">Loading...</span></p>
+    <p><strong>Joined:</strong> <span id="created_at">Loading...</span></p>
     
 
     <footer>
@@ -29,9 +36,12 @@
                 const userData = await response.json();
                 console.log("User Data:", userData); // Debugging log
 
-                // Display user data in HTML
-                document.getElementById('user-name').textContent = userData.name;
-                document.getElementById('user-email').textContent = userData.email;
+                // Populate the HTML elements with user data
+                document.getElementById('username').textContent = userData.username;
+                document.getElementById('email').textContent = userData.email;
+                document.getElementById('bio').textContent = userData.bio;
+                document.getElementById('age').textContent = userData.age;
+                document.getElementById('created_at').textContent = new Date(userData.created_at).toLocaleDateString();
 
             } catch (error) {
                 console.error("Error fetching user profile:", error);

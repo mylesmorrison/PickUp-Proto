@@ -40,8 +40,10 @@ app.get("/profile", (req, res) => res.sendFile(path.join(__dirname, "../public/p
 
 console.log(__dirname)
 // Serve profile.html dynamically
+
 app.get("/profile.html/:user_id", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/profile.html"));
+    console.log(req.params)
 });
 
 

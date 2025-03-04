@@ -18,7 +18,8 @@ async function getUserById(user_id) {
     if(!user) {
       console.log("user not found!")
     } else {
-      console.log("user: ", user)
+      //console.log("user: ", user)
+      return user
     }
     
   } catch(error) {
