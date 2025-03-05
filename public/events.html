@@ -6,6 +6,20 @@
     <title>Pick Up | Events</title>
 </head>
 <body>
-    
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            console.log("hello")
+            try {
+                const response = await fetch(`/api/events`)
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const eventData = await response.json();
+                console.log("Event Data:", eventData); // Debugging log
+            } catch (error) {
+                console.error("Error fetching events:", error);
+            }
+        })
+    </script>
 </body>
 </html>
