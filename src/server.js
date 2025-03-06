@@ -37,15 +37,16 @@ app.get("/about", (req, res) => res.sendFile(path.join(__dirname, "../public/abo
 app.get("/login", (req, res) => res.sendFile(path.join(__dirname, "../public/login.html")));
 app.get("/signup", (req, res) => res.sendFile(path.join(__dirname, "../public/signup.html")));
 app.get("/profile", (req, res) => res.sendFile(path.join(__dirname, "../public/profile.html")))
+app.get("/create", (req, res) => res.sendFile(path.join(__dirname, "../public/create.html")))
 
-console.log(__dirname)
-// Serve profile.html dynamically
 
-app.get("/profile.html/:user_id", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/profile.html"));
-    console.log(req.params)
-});
+// Get the form data from create.html
 
+app.post("/create/submit", (req, res) => {
+    const data = req.body
+    console.log(data)
+    res.sendStatus(200)
+})
 
 app.post('/login/practice', (req, res) => {
     const {username, password} = req.body

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick Up | Create</title>
+</head>
+<body>
+    <header> 
+    </header>
+
+    <div id="page-title">
+        <h1>Create Event</h1>
+    </div>
+
+    <div id="create-form">
+        <!-- JS does not require form's action attribute-->
+        <form method="post" id="create-form">
+            <input type="text" name="event-name" id="event-name" placeholder="event name">
+            <input type="text" name="event-desc" id="event-desc" placeholder="event description">
+            <button>create</button>
+        </form>
+    </div>
+
+    <footer>
+    </footer>
+    <script>
+        document.getElementById("create-form").addEventListener("submit", async (event) => {
+            event.preventDefault(); // Prevent default form submission
+            
+            let event_name = document.getElementById("event-name").value 
+            let event_desc = document.getElementById("event-desc").value 
+            
+            let data = {event_name, event_desc} 
+
+            try {
+
+                
+
+                //form submission using fetch 
+                let response = await fetch("/create/submit", {
+                    method: "POST", 
+                    headers: {
+                        "Content-Type": "application/json" // We're sending JSON data
+                    },
+                    body: JSON.stringify(data) // Convert our data into a JSON string
+                })
+
+                if (response.ok) {
+                    let result = await response.json(); // Parse JSON response
+                    console.log("Success:", result);
+                    alert("Event submitted successfully!"); // Show success message
+                } else {
+                    throw new Error("Failed to submit event")
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("An error occurred while submitting the event.");
+            }
+        })
+        
+    </script>
+    
+</body>
+</html>
