@@ -96,4 +96,4 @@ addEvent(
 );
 **/
 
-module.exports = { getEvents }
+module.exports = { getEvents, addEvent }

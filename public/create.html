@@ -17,6 +17,8 @@
         <!-- JS does not require form's action attribute-->
         <form method="post" id="create-form">
             <input type="text" name="event-name" id="event-name" placeholder="event name">
+            <input type="text" name="event-date" id="event-date" placeholder="event date">
+            <input type="text" name="event-location" id="event-loc" placeholder="event location">
             <input type="text" name="event-desc" id="event-desc" placeholder="event description">
             <button>create</button>
         </form>
@@ -29,16 +31,18 @@
             event.preventDefault(); // Prevent default form submission
             
             let event_name = document.getElementById("event-name").value 
+            let event_date = document.getElementById("event-date").value
+            let event_location = document.getElementById("event-loc").value
             let event_desc = document.getElementById("event-desc").value 
             
-            let data = {event_name, event_desc} 
+            let data = {event_name, event_date, event_location, event_desc} 
 
             try {
 
                 
 
                 //form submission using fetch 
-                let response = await fetch("/create/submit", {
+                let response = await fetch("/api/events/create", {
                     method: "POST", 
                     headers: {
                         "Content-Type": "application/json" // We're sending JSON data

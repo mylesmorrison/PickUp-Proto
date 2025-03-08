@@ -40,13 +40,6 @@ app.get("/profile", (req, res) => res.sendFile(path.join(__dirname, "../public/p
 app.get("/create", (req, res) => res.sendFile(path.join(__dirname, "../public/create.html")))
 
 
-// Get the form data from create.html
-
-app.post("/create/submit", (req, res) => {
-    const data = req.body
-    console.log(data)
-    res.sendStatus(200)
-})
 
 app.post('/login/practice', (req, res) => {
     const {username, password} = req.body
