@@ -55,11 +55,13 @@
                     console.log("Success:", result);
                     alert("Event submitted successfully!"); // Show success message
                 } else {
-                    throw new Error("Failed to submit event")
+                    let errorData = await response.json(); // Extract JSON error response
+                    console.error("Server Error:", errorData.error); // Log specific error from backend
+                    alert("Error: " + errorData.error); // Show error message
                 }
             } catch (error) {
-                console.error("Error:", error);
-                alert("An error occurred while submitting the event.");
+                console.error("Network Error:", error);
+                alert("A network error occurred while submitting the event.");
             }
         })
         

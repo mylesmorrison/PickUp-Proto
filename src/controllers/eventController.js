@@ -29,16 +29,30 @@ const getEventInformation = (req, res) => {
 const createEvent = async (req, res) => {
     try {
         const data = req.body
-        //validate inputs 
 
-        if (!data.event_name || !data.event_date || !data.event_location || data.event_desc) {
-            return res.status(400).json({ error: "All fields are required: event_name, event_date, event_location, event_desc" })
+        // validate inputs 
+        // all fields required
+        if (!data.event_name || !data.event_date || !data.event_location || !data.event_desc) {
+            return res.status(400).json({ error: "All fields are required: event_name, event_date, event_location, event_desc" });
         }
+
+        // event_name must be a string 
+        if (typeof(data.event_name) != "string") {
+            return res.status(400).json({error: "event_name must be a string"})
+        }
+
+        // event_date must be a date
+        let dateObject = new Date(data.event_date) 
+        if (isNaN(dateObject.getTime())) {
+            return res.status(400).json({ error: "Invalid event_date: Must be a valid date (YYYY-MM-DD format recommended)" });
+        }
+
+
         const event = await addEvent(data.event_name, data.event_date, data.event_location, data.event_desc)
         console.log(event)
-        res.json({"response": "successful"})
+        return res.json({"response": "successful"})
     } catch (error) {
-        res.status(500).json({ error: "error adding event: " + error.message })
+        return res.status(500).json({ error: "error adding event: " + error.message })
     }
 }
 
