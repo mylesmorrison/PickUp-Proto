@@ -47,6 +47,15 @@ const createEvent = async (req, res) => {
             return res.status(400).json({ error: "Invalid event_date: Must be a valid date (YYYY-MM-DD format recommended)" });
         }
 
+        //event_location must be a string 
+        if (typeof(data.event_location) != "string") {
+            return res.status(400).json({error: "event_location must be a string"})
+        }
+
+        //event_desc must be a string 
+        if (typeof(data.event_desc) != "string") {
+            return res.status(400).json({error: "event_desc must be a string"})
+        }
 
         const event = await addEvent(data.event_name, data.event_date, data.event_location, data.event_desc)
         console.log(event)
@@ -57,7 +66,7 @@ const createEvent = async (req, res) => {
 }
 
 const deleteEvent = (req, res) => {
-
+    
 }
 
 const updateEvent = (req, res) => {
