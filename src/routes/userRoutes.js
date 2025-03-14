@@ -5,7 +5,10 @@ const userController = require('../controllers/userController.js');
 
 //Route 
 router.get("/", userController.getAllUsers)
+router.get("/session-user", userController.getSessionUser);
+router.post("/login", userController.loginUser)
 router.get("/:user_id", userController.getUserProfile)
+
 //Route to get user profile
 //router.get("/:user_id", userController.getUserProfile);
 //Route to get user events

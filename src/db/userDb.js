@@ -86,7 +86,17 @@ async function deleteUser(user_id) {
   }
 }
 
-module.exports = { getUsers, getUserById }
+async function getUserByUsername(username) {
+  try {
+    const user = await User.findOne({ username });
+    return user; // Returns null if user not found
+  } catch (error) {
+    console.log("Error fetching user:", error.message);
+    return null;
+  }
+}
+
+module.exports = { getUsers, getUserById, getUserByUsername }
 
 
 //connectDB()

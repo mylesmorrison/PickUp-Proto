@@ -7,11 +7,41 @@
     <script defer src="./js/script.js"></script> <!-- Include JS file -->
 </head>
 <body>
+    <header>
+        <a href="/home">Home</a>
+        <a href="/create">Create</a>
+        <a href="/login">Login</a>
+
+    </header>
     <h1>Welcome to PickUpApp</h1>
     <button id="loadEvents">Load Events</button> <!-- Button to fetch events -->
 
     <h2>Events:</h2>
     <ul id="eventList"></ul> <!-- Where events will be displayed -->
+    <div id="usernameDisplay">Loading user...</div>
+    <footer>
+
+    </footer>
+    <script>
+        async function fetchSessionUser() {
+            try {
+                const response = await fetch("/api/users/session-user");
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById("usernameDisplay").innerText = `Welcome, ${data.user.username}!`;
+                } else {
+                    document.getElementById("usernameDisplay").innerText = "Not logged in";
+                }
+            } catch (error) {
+                console.error("Error fetching session user:", error);
+                document.getElementById("usernameDisplay").innerText = "Error loading user";
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = fetchSessionUser;
+    </script>
     
 </body>
 </html>

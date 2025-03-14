@@ -33,31 +33,23 @@ connectDb();
 
 // Serve static frontend pages
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "../public/index.html")));
+app.get("/home", (req, res) => res.sendFile(path.join(__dirname, "../public/index.html")));
 app.get("/about", (req, res) => res.sendFile(path.join(__dirname, "../public/about.html")));
 app.get("/login", (req, res) => res.sendFile(path.join(__dirname, "../public/login.html")));
 app.get("/signup", (req, res) => res.sendFile(path.join(__dirname, "../public/signup.html")));
 app.get("/profile", (req, res) => res.sendFile(path.join(__dirname, "../public/profile.html")))
 app.get("/create", (req, res) => res.sendFile(path.join(__dirname, "../public/create.html")))
 
+// use sessions 
+app.use(
+    session({
+        secret: "your_secret_key",
+        resave: false,
+        saveUninitialized: true,
+        cookie: { secure: false }
+    })
+);
 
-
-app.post('/login/practice', (req, res) => {
-    const {username, password} = req.body
-    if (username && password) {
-        if (req.session.authenticated) {
-            res.json(req.session)
-        } else {
-            if (password === "123") {
-                req.session.authenticated = true;
-                req.sessionID.user = {
-                    username, password
-                }
-                res.json(req.session)
-            }
-        }
-    }
-    res.send(200)
-})
 
 const PORT = 3001;
 app.listen(PORT, () => {

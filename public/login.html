@@ -7,6 +7,7 @@
 </head>
 <body>
     <div id="banner"></div>
+    <a href="/home">home</a>
     <form action="" method="GET" id="form" type="submit">
         <input type="text" name="" id="input1">
         <input type="text" name="" id="input2">
@@ -23,20 +24,28 @@
                 
                 //const response = await fetch("/api/login")
                 console.log("submitted"); // ✅ Now this will log in the console
-                let inputs = [document.getElementById("input1").value, document.getElementById("input2").value]
-                console.log("inputs: ", inputs)
+                let username = document.getElementById("input1").value
+                let password = document.getElementById("input2").value
 
                 //backend calls
-                const response = await fetch("/api/users"); // Request events from backend
-                const users = await response.json();
-                const userList = document.getElementById("userList");
-                userList.innerHTML = ""; // Clear previous events
-                users.forEach(user => {
-                    const li = document.createElement("li");
-                    li.textContent = `${user.username} - ${user.email} at ${user.age}`;
-                    userList.appendChild(li);
-                });
-                
+                const response = await fetch("/api/users/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                alert("Login Successful");
+                window.location.href = "/home"; // Redirect user after login
+            } else {
+                alert("Login Failed: " + data.message);
+            }
+
+
             } catch (error) {
                 console.error("error submitting ", error);
             }   

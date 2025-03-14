@@ -1,4 +1,4 @@
-const { getUsers, getUserById } = require("../db/userDb")
+const { getUsers, getUserById, getUserByUsername } = require("../db/userDb")
 
 
 const getAllUsers = async (req, res) => {
@@ -27,10 +27,50 @@ const getUserProfile = async (req, res) => {
     }
 }
 
-const getUserEvents = (req, res) => {
+const getUserEvents = async (req, res) => {
     
 }
 
+const loginUser = async (req, res) => {
+    const { username, password } = req.body
+
+    if (!username || !password) {
+        return res.status(400).json({ success: false, message: "Missing username or password" });
+    }
+    try {
+        const user = await getUserByUsername(username); // Retrieve user from DB
+
+        if (!user) {
+            return res.status(401).json({ success: false, message: "Invalid username or password" });
+        }
+
+        // Start a session after successful login
+        req.session.user = {
+            id: user._id,
+            username: user.username,
+            email: user.email
+        };
+
+        console.log(user._id)
 
 
-module.exports = { getAllUsers, getUserProfile }
+        return res.json({ success: true, message: "Login successful" });
+
+    } catch (error) {
+        console.error("Login error:", error.message);
+        return res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+
+}
+
+const getSessionUser = async (req, res) => {
+    if (!req.session.user) {
+        return res.status(401).json({ success: false, message: "No user logged in" });
+    }
+
+    res.json({ success: true, user: req.session.user });
+};
+
+
+
+module.exports = { getAllUsers, getUserProfile, loginUser, getSessionUser }
