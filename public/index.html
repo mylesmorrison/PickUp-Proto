@@ -42,6 +42,40 @@
         // Call the function when the page loads
         window.onload = fetchSessionUser;
     </script>
+    <script>
+        async function fetchUserLocation() {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(async (position) => {
+                    const { latitude, longitude } = position.coords;
+                    console.log(`User's coordinates: ${latitude}, ${longitude}`);
+    
+                    // Send the coordinates to the backend
+                    const response = await fetch("/api/users/location", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ latitude, longitude })
+                    });
+    
+                    const data = await response.json();
+                    if (data.success) {
+                        console.log(`User's location: ${data.city}, ${data.country}`);
+                    } else {
+                        console.error("Failed to fetch location data");
+                    }
+                }, (error) => {
+                    console.error("Error getting location:", error);
+                });
+            } else {
+                console.error("Geolocation is not supported by this browser.");
+            }
+        }
+    
+        // Call this function after login
+        window.onload = () => {
+            fetchSessionUser();
+            fetchUserLocation(); // Fetch user location after login
+        };
+    </script>
     
 </body>
 </html>
